@@ -1,0 +1,128 @@
+.nav-bar-container {
+    background-color: rgb(30, 30, 30);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+}
+
+.header-logo {
+    position: absolute;
+    left: 5%;
+}
+
+.header-logo img {
+    width: auto;
+    height: 10vh;
+    padding: 5px;
+}
+
+.nav-bar-links {
+    position: absolute;
+    right: 0px;
+    height: 40%;
+    top: 10vh;
+    background-color: rgb(30, 30, 30);
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* nav bar animation */
+    clip-path: circle(10px at 90% -10%);
+    -webkit-clip-path: circle(10px at 90% -10%);
+    transition: all 0.3s ease-out;
+    /* nav bar animation */
+}
+
+.nav-bar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar-links li {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+}
+
+.nav-bar-links a {
+    color: #19CEDA;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 2vmax;
+} 
+
+.nav-bar-links a:hover {
+    color: rgb(0, 255, 213);
+}
+
+.nav-active {
+    clip-path: circle(1300px at 90% -10%);
+    -webkit-clip-path: circle(1300px at 90% -10%);
+}
+
+/* nav bar links opacity change */
+.nav-bar-links li:nth-child(1) {
+    transition: all 0.5s ease 0.1s;
+}
+.nav-bar-links li:nth-child(2) {
+    transition: all 0.5s ease 0.2s;
+}
+.nav-bar-links li:nth-child(3) {
+    transition: all 0.5s ease 0.3s;
+}
+li.fade {
+    opacity: 1;
+}
+/* nav bar links opacity change */
+
+.selected-nav-link li {
+    color: rgb(26, 226, 143);
+}
+
+#burger-container {
+    position: absolute;
+    right: 5%;
+}
+
+#burger-container div {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 30px;
+    height: 5px;
+    margin: 5px;
+}
+
+@media (min-width: 1300px) {
+    #burger-container {
+        display: none;
+    }
+
+    .nav-bar-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 50%;
+        flex-direction: row;
+        top: 0;
+        height: 10vh;
+        transition: none;
+        background-color: transparent;
+        margin-right: 20px;
+        clip-path: none;
+    }
+
+    .nav-bar-links li {
+        opacity: 1;
+    }
+
+    .nav-bar-links a {
+        font-size: 2.5vmin;
+    } 
+}

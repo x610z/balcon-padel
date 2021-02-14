@@ -1,0 +1,42 @@
+.scheduler-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    
+}
+
+.top-date-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3vh;
+}
+
+.month-info-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.schedule-selection {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.schedule-days {
+    background-color: rgb(118, 216, 255);
+    width: 100%;
+}
+
+.today-highlight {
+    background-color: #09cf91;
+    color: rgb(255, 255, 255);
+    width: 100%;
+}
+
+.in-prev-month,
+.in-next-month {
+    opacity: 0.5;
+    background-color: rgb(238, 238, 238);
+}
