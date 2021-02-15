@@ -1,0 +1,19 @@
+
+.day-schedule-container {
+    border: 3px solid black;
+    width: 100%;
+}
+
+.day-schedule {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.day-container {
+    width: 100%;
+}
+
+.day-change-button {
+
+}

@@ -1,41 +1,31 @@
-import React, { Fragment } from 'react';
-import useSchedule from './schedule-logic/useSchedule';
+import React, { Fragment, useState } from 'react';
 import './month.css';
 
 const MonthSchedule = () => {
-    const { calendarRows, todayFormatted, daysShort } = useSchedule();
-  
-    const dateClickHandler = date => {
-      console.log(date);
-    }
+
+    
   
     return(
         <Fragment>
-            <div className="month-table-container">
-                <table className="month-table">
-                    <thead className="scheduler-days">
-                        <tr className="week-days-container">
-                        {daysShort.map(day => (
-                            <th key={day} className="week-days">{day}</th>
-                        ))}
-                        </tr>
-                    </thead>
-                    <tbody className="month-days-container">
+            <div className="week-schedule-container">
+                <div className="week-schedule">
+                    <div className="schedule-days">
+                        <div className="week-days-container">
+                        {/* {daysShort.map(day => (
+                            <div key={day} className="week-days">{day}</div>
+                        ))} */}
+                        </div>
+                    </div>
+                    <div className="week-row-container">
                         {
-                        Object.values(calendarRows).map(cols => {
-                            return <tr key={cols[0].date} className="month-days-rows">
-                            {cols.map(col => (
-                                col.date === todayFormatted
-                                ? <td key={col.date} className={`${col.classes} today-highlight`} onClick={() => dateClickHandler(col.date)}>
-                                    {col.value}
-                                </td>
-                                : <td key={col.date} className={col.classes} onClick={() => dateClickHandler(col.date)}>{col.value}</td>
-                            ))}
-                            </tr>
-                        })
+                        /* weekDaysArr.map(week => {if(week == today.getDate()){ 
+                            return <div key={week} className="today-highlight">{week}</div>}
+                        else{
+                            return <div key={week} className="month-day">{week}</div>
+                        }}) */
                         }
-                    </tbody>
-                </table>
+                    </div>
+                </div>
             </div>
         </Fragment>
     );

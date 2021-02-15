@@ -1,20 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import './Schedule.css';
-//Schedules
-import DaySchedule from './subpages/day';
-import WeekSchedule from './subpages/week';
-/* import MonthSchedule from "./subpages/month"; */
-//Schedule Logic
-import useSchedule from './subpages/schedule-logic/useSchedule';
+
+//Logic
+import useSchedule from './subpages/schedule-logic/useSchedule'
+
 
 
 const Schedule = () => {
-    const { monthNames, getNextMonth, getPrevMonth, selectedDate, currentDayName } = useSchedule();
-  
-    const dateClickHandler = date => {
-      console.log(date);
-    }
-    
+    const { DaySchedule, WeekSchedule, MonthSchedule } = useSchedule();
+
+
     const [scheduleState, setScheduleState] = useState("day");
     
     function scheduleSwitch(scheduleState) {
@@ -24,22 +19,18 @@ const Schedule = () => {
         } else if (scheduleTest == 'week'){
             return <WeekSchedule />
         } else if (scheduleTest == 'month'){
-            return "month"
+            return <MonthSchedule />
         } else if (scheduleTest == 'year'){
             return "year"
         }
     }
-    console.log(selectedDate)
+    
+    
     return(
         <Fragment>
-            <div className="scheduler-container">
+            <div className="schedule-container">
                 <div className="top-date-container">
-                    <div className="month-info-container">
-                        <button className="month-change-button" onClick={getPrevMonth}>Prev</button>
-                        <button className="month-change-button" onClick={getNextMonth}>Next</button>
-                        <h1>{`${monthNames[selectedDate.getMonth()]} - ${selectedDate.getFullYear()}`}</h1>
-                        {currentDayName}
-                    </div>
+                    
                     <select value={scheduleState} name="schedule-selector" className="schedule-selection" onChange={(e)=>{
                         const selectedSchedule = e.target.value;
                         setScheduleState(selectedSchedule);

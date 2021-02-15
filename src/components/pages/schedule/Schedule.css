@@ -1,4 +1,4 @@
-.scheduler-container {
+.schedule-container {
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -9,7 +9,7 @@
 .top-date-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 3vh;
 }
 
@@ -24,14 +24,36 @@
     
 }
 
-.schedule-days {
+.day-name-container {
+    display: flex;
+    flex-direction: row;
     background-color: rgb(118, 216, 255);
     width: 100%;
+    justify-content: center;
+}
+
+.week-day {
+    color: rgb(0, 0, 0);
+    padding: 1.5vw;
+    font-size: 2vh;
+    width: 100%;
+    border: 1.5px outset black;
 }
 
 .today-highlight {
     background-color: #09cf91;
     color: rgb(255, 255, 255);
+    width: 100%;
+}
+
+.month-day {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: row;
+    font-size: 2vh;
+    padding-bottom: 10vh;
+    border: .5px outset rgb(77, 75, 75);
     width: 100%;
 }
 

@@ -1,34 +1,45 @@
 import React from 'react';
 import { useState } from 'react';
+import DaySchedule from '../day';
+import WeekSchedule from '../week';
+import MonthSchedule from '../month';
 
-const daysShortArr = [
+export const daysOfWeekArr = [
     /* 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' */
-    'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' 
+    'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'
+]
+
+export const daysShortArr = [
+    /* 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' */
+    'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
 ];
 
-const monthNamesArr = [
+export const monthNamesArr = [
   /* 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' */
   'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr) => {
+
+const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysOfWeek = daysOfWeekArr) => {
     const today = new Date();
     const todayFormatted = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
-    const [selectedDay, setSelectedDay] = useState(today);
-    const [selectedWeek, setSelectedWeek] = useState(today);
-    const [selectedMonth, setSelectedMonth] = useState(today);
     const [selectedDate, setSelectedDate] = useState(today);
-    const weekDaysArr = [];
-    
+
+    //Current Date
+    const getCurrentDate = new Date(/*today.getFullYear(), today.getMonth(), today.getDate()*/);
     
 
+    //Date Display
+    const dateDisplay = `${monthNames[selectedDate.getMonth()]} - ${selectedDate.getFullYear()}`;
+    const todayButton = ()=>{
+        setSelectedDate(selectedDate => new Date(today.getFullYear(), today.getMonth(), today.getDate()));
+    };
+
     //Day Generator
-    const getDayOfWeek = today.getDay();
+    const [selectedDay, setSelectedDay] = useState(today);
+    
     const getDay = today.getDate();
-        //First Day in Month
-        const firstDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDate();
-        //Last Day in Month
-        const lastDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
+        
         //Day Function
             //Prev Day
             const getPrevDay = ()=>{
@@ -38,29 +49,39 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr) => {
             const getNextDay = ()=>{
                 setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth(), prevValue.getDate() + 1))
             }
-            //Day Name
-            const currentDayName = daysShort[selectedDate.getDay()];
-
+    
     //Week Generator
+    const [selectedWeek, setSelectedWeek] = useState(today);
+
+    const getDayOfWeek = today.getDay();
+    
+
         //First Day in Week
-        const firstDayInWeek = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + (getDayOfWeek == 0 ? -6 : 1) - getDayOfWeek).getDate();
+        const firstDayInWeek = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + (getDayOfWeek == 0 ? - 6 : 1) - getDayOfWeek).getDate();
         //Last Day in Week
         const lastDayInWeek = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + (getDayOfWeek == 0 ? 0 : 7) - getDayOfWeek).getDate();
         //Week Function
+        const weekDaysArr = [];
         const weekDaysArrCreate = ()=>{
             for(let i = firstDayInWeek; i <= lastDayInWeek; i++){
                 weekDaysArr.push(i)
             }
         }
         weekDaysArrCreate();
-            //Prev Next Week
-            const getPrevWeek = () => {
-                setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth() - 1, 1));
-            }
         
 
-        
+            //Prev Prev Week
+            const getPrevWeek = () => {
+                setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth(), prevValue.getDate() - 7));
+            } 
+            //Prev Next Week
+            const getNextWeek = () => {
+                setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth(), prevValue.getDate() + 7));
+            }       
+
     //Month Generator
+    const [selectedMonth, setSelectedMonth] = useState(today);
+
         //Month Function
             //Prev Next Month
             const getPrevMonth = () => {
@@ -69,36 +90,44 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr) => {
             const getNextMonth = () => {
                 setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth() + 1, selectedDate.getDate()));  
             }
-
-    //Year Generator
-
-    // console.log("First day in week: " + firstDayInWeek)
-    // console.log("Last day in week: " + lastDayInWeek)
-    // console.log("First day in month: " + firstDayInMonth)
-    // console.log("Last day in month: " + lastDayInMonth)
-
+            //First Day in Month
+            const firstDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDate();
+            //Last Day in Month
+            const lastDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
     
-
     
-
+    
     return {
-        todayFormatted,
-        weekDaysArr,
-        daysShort,
-        monthNames,
-        today,
-        currentDayName,
-        //Selected Dates
-        selectedDay,
-        selectedWeek,
-        selectedMonth,
-        selectedDate,
-        //Prev Next Functions
+        //Schedules
+        DaySchedule,
+        WeekSchedule,
+        MonthSchedule,
+        
+        //Prev/Next/Current
         getPrevDay,
         getNextDay,
+        getPrevWeek,
+        getNextWeek,
         getPrevMonth,
         getNextMonth,
+        getCurrentDate,
+        dateDisplay,
+        //Selected Dates
+        selectedDate,
+        //Days/Months
+        daysOfWeek,
+        daysShort,
+        monthNames,
+        weekDaysArr,
+        today,
+        todayButton,
+        //
+        firstDayInWeek,
+        lastDayInWeek,
+        
     }
+
+
 }
 
 export default useSchedule;
