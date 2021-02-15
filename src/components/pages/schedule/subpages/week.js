@@ -31,10 +31,10 @@ const WeekSchedule = () => {
                     </div>
                     <div className="week-row-container">
                         {
-                            weekDaysArr.map(week => {if(week == (today.getDate())){ 
-                                return <div key={week} className="today-highlight">{week}</div>
+                            Object.values(weekDaysArr).map(week => {if(`${week.day}/${week.month}/${week.year}` === getCurrentDate){ 
+                                return <div key={week.day} className="today-highlight">{week.day}</div>
                             } else {
-                                return <div key={week} className="month-day">{week}</div>
+                                return <div key={week.day} className="month-day">{week.day}</div>
                             }
                             })
                         }

@@ -26,7 +26,7 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
     const [selectedDate, setSelectedDate] = useState(today);
 
     //Current Date
-    const getCurrentDate = new Date(/*today.getFullYear(), today.getMonth(), today.getDate()*/);
+    const getCurrentDate = `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`;
     
 
     //Date Display
@@ -64,7 +64,12 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
         const weekDaysArr = [];
         const weekDaysArrCreate = ()=>{
             for(let i = firstDayInWeek; i <= lastDayInWeek; i++){
-                weekDaysArr.push(i)
+                weekDaysArr.push({
+                    day: i,
+                    month: `${selectedDate.getMonth()}`,
+                    year: `${selectedDate.getFullYear()}`,
+                    fullDate: `${selectedDate.getDate()}/${selectedDate.getMonth()}/${selectedDate.getFullYear()}` 
+                })
             }
         }
         weekDaysArrCreate();
