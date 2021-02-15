@@ -5,7 +5,7 @@ import useSchedule from './schedule-logic/useSchedule';
 
 
 const DaySchedule = () => {
-    const { daysShort, getPrevDay, getNextDay, selectedDate, monthNames, getPrevMonth, getNextMonth, getCurrentDate, dateDisplay, todayButton, daysOfWeek } = useSchedule();
+    const { getPrevDay, getNextDay, getPrevMonth, getNextMonth, todayButton, selectedDate, getCurrentDate, dateDisplay, daysOfWeek } = useSchedule();
             
 
     return(

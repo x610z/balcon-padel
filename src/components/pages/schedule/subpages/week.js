@@ -3,7 +3,7 @@ import './week.css';
 import useSchedule from './schedule-logic/useSchedule';
 
 const WeekSchedule = () => {
-    const { daysShort, selectedDate, monthNames, getPrevMonth, getNextMonth, getCurrentDate, getPrevWeek, getNextWeek, weekDaysArr, dateDisplay, todayButton } = useSchedule();
+    const { getPrevWeek, getNextWeek, getPrevMonth, getNextMonth, todayButton, daysShort, selectedDate, getCurrentDate,  weekDaysArr, dateDisplay } = useSchedule();
     
     const today = new Date();
 
@@ -31,7 +31,7 @@ const WeekSchedule = () => {
                     </div>
                     <div className="week-row-container">
                         {
-                            Object.values(weekDaysArr).map(week => {if(`${week.day}/${week.month}/${week.year}` === getCurrentDate){ 
+                            Object.values(weekDaysArr).map(week => {if(`${week.day}/${week.month}/${week.year}` === getCurrentDate){
                                 return <div key={week.day} className="today-highlight">{week.day}</div>
                             } else {
                                 return <div key={week.day} className="month-day">{week.day}</div>

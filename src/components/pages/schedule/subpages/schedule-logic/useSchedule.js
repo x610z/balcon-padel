@@ -27,7 +27,6 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
 
     //Current Date
     const getCurrentDate = `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`;
-    
 
     //Date Display
     const dateDisplay = `${monthNames[selectedDate.getMonth()]} - ${selectedDate.getFullYear()}`;
@@ -36,8 +35,6 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
     };
 
     //Day Generator
-    const [selectedDay, setSelectedDay] = useState(today);
-    
     const getDay = today.getDate();
         
         //Day Function
@@ -51,15 +48,13 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
             }
     
     //Week Generator
-    const [selectedWeek, setSelectedWeek] = useState(today);
-
     const getDayOfWeek = today.getDay();
     
-
         //First Day in Week
         const firstDayInWeek = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + (getDayOfWeek == 0 ? - 6 : 1) - getDayOfWeek).getDate();
         //Last Day in Week
         const lastDayInWeek = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + (getDayOfWeek == 0 ? 0 : 7) - getDayOfWeek).getDate();
+
         //Week Function
         const weekDaysArr = [];
         const weekDaysArrCreate = ()=>{
@@ -74,7 +69,6 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
         }
         weekDaysArrCreate();
         
-
             //Prev Prev Week
             const getPrevWeek = () => {
                 setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth(), prevValue.getDate() - 7));
@@ -85,7 +79,11 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
             }       
 
     //Month Generator
-    const [selectedMonth, setSelectedMonth] = useState(today);
+
+        //First Day in Month
+        const firstDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDate();
+        //Last Day in Month
+        const lastDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
 
         //Month Function
             //Prev Next Month
@@ -93,12 +91,9 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
                 setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth() - 1, selectedDate.getDate()));
             }
             const getNextMonth = () => {
-                setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth() + 1, selectedDate.getDate()));  
+                setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth() + 1, selectedDate.getDate()));
             }
-            //First Day in Month
-            const firstDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDate();
-            //Last Day in Month
-            const lastDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
+            
     
     
     
@@ -107,7 +102,6 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
         DaySchedule,
         WeekSchedule,
         MonthSchedule,
-        
         //Prev/Next/Current
         getPrevDay,
         getNextDay,
@@ -117,7 +111,7 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
         getNextMonth,
         getCurrentDate,
         dateDisplay,
-        //Selected Dates
+        //Selected Date
         selectedDate,
         //Days/Months
         daysOfWeek,
