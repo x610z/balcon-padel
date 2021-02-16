@@ -10,7 +10,7 @@ const Schedule = () => {
     const { DaySchedule, WeekSchedule, MonthSchedule } = useSchedule();
 
 
-    const [scheduleState, setScheduleState] = useState("day");
+    const [scheduleState, setScheduleState] = useState("month");
     
     function scheduleSwitch(scheduleState) {
         let scheduleTest = scheduleState;

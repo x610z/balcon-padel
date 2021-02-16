@@ -36,6 +36,7 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
 
     //Day Generator
     const getDay = today.getDate();
+    
         
         //Day Function
             //Prev Day
@@ -82,10 +83,74 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
 
         //First Day in Month
         const firstDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDate();
+        const firstDayInNextMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 1).getDate();
         //Last Day in Month
         const lastDayInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
+        const lastDayInPrevMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() , 0).getDate();
+        
+        //
+        const startingPoint = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDay();
+        const endingPoint = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDay();
+        
 
         //Month Function
+        const monthDaysArr = [];
+        const prevDaysArr = [];
+        const nextDaysArr = [];
+        let getPrevMonthDays = lastDayInPrevMonth;
+        let getNextMonthDays = firstDayInNextMonth;
+        let checkForCero = startingPoint;
+        
+        const monthDaysArrCreate = ()=>{
+            //For Prev Days
+            if(checkForCero == 0){
+                for(let a = 1; a < (checkForCero + 7); a++){
+                    prevDaysArr.push({
+                        prevMonthDays: a,
+                        day: `${getPrevMonthDays}`,
+                        month: `${(selectedDate.getMonth() - 1)}`,
+                        year: `${selectedDate.getFullYear()}`,
+                        fullDate: `${selectedDate.getDate()}/${(selectedDate.getMonth() - 1)}/${selectedDate.getFullYear()}`
+                    })
+                    getPrevMonthDays--;
+                }
+            } else {
+                for(let a = 1; a < startingPoint; a++){
+                    prevDaysArr.push({
+                        prevMonthDays: a,
+                        day: `${getPrevMonthDays}`,
+                        month: `${(selectedDate.getMonth() - 1)}`,
+                        year: `${selectedDate.getFullYear()}`,
+                        fullDate: `${selectedDate.getDate()}/${(selectedDate.getMonth() - 1)}/${selectedDate.getFullYear()}`
+                    })
+                    getPrevMonthDays--;
+                }
+            }
+            //For Current Days
+            for(let i = firstDayInMonth; i <= lastDayInMonth; i++){
+                monthDaysArr.push({
+                    day: i,
+                    month: `${selectedDate.getMonth()}`,
+                    year: `${selectedDate.getFullYear()}`,
+                    fullDate: `${selectedDate.getDate()}/${selectedDate.getMonth()}/${selectedDate.getFullYear()}` 
+                })
+            }
+            //For Next Days
+            for(let b = 0; b < (7 - endingPoint); b++){
+                if(endingPoint != 0){
+                nextDaysArr.push({
+                    nextMonthDays: b,
+                    day: `${getNextMonthDays}`,
+                    month: `${selectedDate.getMonth() + 1}`,
+                    year: `${selectedDate.getFullYear()}`,
+                    fullDate: `${selectedDate.getDate()}/${selectedDate.getMonth() + 1}/${selectedDate.getFullYear()}`
+                })
+                getNextMonthDays++;
+            }}
+        }
+        monthDaysArrCreate();
+        
+        
             //Prev Next Month
             const getPrevMonth = () => {
                 setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth() - 1, selectedDate.getDate()));
@@ -118,6 +183,9 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
         daysShort,
         monthNames,
         weekDaysArr,
+        monthDaysArr,
+        prevDaysArr,
+        nextDaysArr,
         today,
         todayButton,
         //

@@ -3,7 +3,7 @@ import './month.css';
 import useSchedule from './schedule-logic/useSchedule';
 
 const MonthSchedule = () => {
-    const { getPrevWeek, getNextWeek, getPrevMonth, getNextMonth, todayButton, daysShort, selectedDate, getCurrentDate,  weekDaysArr, dateDisplay } = useSchedule();
+    const { getPrevMonth, getNextMonth, todayButton, daysShort, selectedDate, getCurrentDate,  monthDaysArr, dateDisplay, prevDaysArr, nextDaysArr } = useSchedule();
     
   
     return(
@@ -14,8 +14,8 @@ const MonthSchedule = () => {
                 <h1 className="date-display">{dateDisplay}</h1>
                 <button className="today-button" onClick={todayButton}>Today</button>
             </div>
-            <div className="week-schedule-container">
-                <div className="week-schedule">
+            <div className="month-schedule-container">
+                <div className="month-schedule">
                     <div className="day-name-container">
                     { 
                         daysShort.map(day => 
@@ -23,10 +23,28 @@ const MonthSchedule = () => {
                         ) 
                     }
                     </div>
-                    <div className="week-row-container">
-                        {
-                            
+                    <div className="month-container">   
+                    {
+                        //For Prev Days
+                        Object.values(prevDaysArr.reverse()).map(month => {
+                            return <div key={`${month.prevMonthDays}/${month.month}/${month.year}`} className="month-day in-prev-month">{month.day}</div>
+                        })
+                    }   
+                    {
+                        //For Current Days
+                        Object.values(monthDaysArr).map(month => {if(`${month.day}/${month.month}/${month.year}` === getCurrentDate){
+                            return <div key={`${month.day}/${month.month}/${month.year}`} className="month-day today-highlight">{month.day}</div>
+                        } else {
+                            return <div key={`${month.day}/${month.month}/${month.year}`} className="month-day">{month.day}</div>
                         }
+                        })
+                    }
+                    {
+                        //For Next Days
+                        Object.values(nextDaysArr).map(month => {
+                            return <div key={`${month.nextMonthDays}/${month.month}/${month.year}`} className="month-day in-next-month">{month.day}</div>
+                        })
+                    } 
                     </div>
                 </div>
             </div>

@@ -1,41 +1,18 @@
-.month-table-container {
-    width: 90%;
+.month-schedule-container {
     border: 3px solid black;
+    width: 100%;
 }
 
-.month-table {
+.month-schedule {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.week-days-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.week-days {
-    color: rgb(0, 0, 0);
-    padding: 1.5vw;
-    font-size: 2vh;
-    width: 100%;
-    border: 1.5px outset black;
-}
-
-.month-days-container {
+.month-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-.month-days-rows {
-    display: flex;
-}
-
-.month-days-rows td {
-    font-size: 2vh;
-    padding-bottom: 10vh;
-    border: .5px outset rgb(77, 75, 75);
-    width: 100%;
-
-}
