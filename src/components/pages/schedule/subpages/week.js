@@ -32,7 +32,7 @@ const WeekSchedule = () => {
                     <div className="week-row-container">
                         {
                             Object.values(weekDaysArr).map(week => {if(`${week.day}/${week.month}/${week.year}` === getCurrentDate){
-                                return <div key={`${week.day}/${week.month}/${week.year}`} className="today-highlight">{week.day}</div>
+                                return <div key={`${week.day}/${week.month}/${week.year}`} className="month-day today-highlight">{week.day}</div>
                             } else {
                                 return <div key={`${week.day}/${week.month}/${week.year}`} className="month-day">{week.day}</div>
                             }
