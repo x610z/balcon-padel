@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/balcon-padel/static/css/main.a642d2b2.chunk.css",
+    "main.js": "/balcon-padel/static/js/main.7109d3db.chunk.js",
+    "main.js.map": "/balcon-padel/static/js/main.7109d3db.chunk.js.map",
+    "runtime-main.js": "/balcon-padel/static/js/runtime-main.45103c9f.js",
+    "runtime-main.js.map": "/balcon-padel/static/js/runtime-main.45103c9f.js.map",
+    "static/css/2.e1da196e.chunk.css": "/balcon-padel/static/css/2.e1da196e.chunk.css",
+    "static/js/2.111d75fc.chunk.js": "/balcon-padel/static/js/2.111d75fc.chunk.js",
+    "static/js/2.111d75fc.chunk.js.map": "/balcon-padel/static/js/2.111d75fc.chunk.js.map",
+    "static/js/3.ce47d7d7.chunk.js": "/balcon-padel/static/js/3.ce47d7d7.chunk.js",
+    "static/js/3.ce47d7d7.chunk.js.map": "/balcon-padel/static/js/3.ce47d7d7.chunk.js.map",
+    "index.html": "/balcon-padel/index.html",
+    "static/css/2.e1da196e.chunk.css.map": "/balcon-padel/static/css/2.e1da196e.chunk.css.map",
+    "static/css/main.a642d2b2.chunk.css.map": "/balcon-padel/static/css/main.a642d2b2.chunk.css.map",
+    "static/js/2.111d75fc.chunk.js.LICENSE.txt": "/balcon-padel/static/js/2.111d75fc.chunk.js.LICENSE.txt",
+    "static/media/balcon-padel-logo-png.35aeb338.png": "/balcon-padel/static/media/balcon-padel-logo-png.35aeb338.png",
+    "static/media/font-awesome.min.css": "/balcon-padel/static/media/fontawesome-webfont.f691f37e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.45103c9f.js",
+    "static/css/2.e1da196e.chunk.css",
+    "static/js/2.111d75fc.chunk.js",
+    "static/css/main.a642d2b2.chunk.css",
+    "static/js/main.7109d3db.chunk.js"
+  ]
+}
