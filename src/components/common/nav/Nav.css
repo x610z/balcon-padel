@@ -34,6 +34,7 @@
     -webkit-clip-path: circle(10px at 90% -10%);
     transition: all 0.3s ease-out;
     /* nav bar animation */
+    z-index: 10;
 }
 
 .nav-bar-links ul {
@@ -64,6 +65,7 @@
 .nav-active {
     clip-path: circle(1300px at 90% -10%);
     -webkit-clip-path: circle(1300px at 90% -10%);
+    z-index: 10;
 }
 
 /* nav bar links opacity change */
@@ -93,7 +95,7 @@ li.fade {
 #burger-container div {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #19CEDA;
     width: 30px;
     height: 5px;
     margin: 5px;

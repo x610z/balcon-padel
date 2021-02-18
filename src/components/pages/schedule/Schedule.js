@@ -13,14 +13,14 @@ const Schedule = () => {
     const [scheduleState, setScheduleState] = useState("month");
     
     function scheduleSwitch(scheduleState) {
-        let scheduleTest = scheduleState;
-        if (scheduleTest == 'day') {
+        let scheduleDisplay = scheduleState;
+        if (scheduleDisplay == 'day') {
             return <DaySchedule />
-        } else if (scheduleTest == 'week'){
+        } else if (scheduleDisplay == 'week'){
             return <WeekSchedule />
-        } else if (scheduleTest == 'month'){
+        } else if (scheduleDisplay == 'month'){
             return <MonthSchedule />
-        } else if (scheduleTest == 'year'){
+        } else if (scheduleDisplay == 'year'){
             return "year"
         }
     }
@@ -29,21 +29,20 @@ const Schedule = () => {
     return(
         <Fragment>
             <div className="schedule-container">
-                <div className="top-date-container">
-                    
+                <div className="select-container">
                     <select value={scheduleState} name="schedule-selector" className="schedule-selection" onChange={(e)=>{
                         const selectedSchedule = e.target.value;
                         setScheduleState(selectedSchedule);
                     }}>
-                        <option value="day">Day</option>
-                        <option value="week">Week</option>
-                        <option value="month">Month</option>
-                        <option value="year">Year</option>
+                        <option value="day">Día</option>
+                        <option value="week">Semana</option>
+                        <option value="month">Mes</option>
+                        <option value="year">Año</option>
                     </select>
                 </div>
-                <div>
-                    {scheduleSwitch(scheduleState)}
-                </div>
+                
+                {scheduleSwitch(scheduleState)}
+                
                 
             </div>
         </Fragment>

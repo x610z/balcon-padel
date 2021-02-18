@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import './week.css';
 import useSchedule from './schedule-logic/useSchedule';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const WeekSchedule = () => {
     const { getPrevWeek, getNextWeek, getPrevMonth, getNextMonth, todayButton, daysShort, selectedDate, getCurrentDate,  weekDaysArr, dateDisplay } = useSchedule();
@@ -11,14 +13,14 @@ const WeekSchedule = () => {
     return(
         <Fragment>
             <div className="month-info-container">
-                <button className="month-change-button" onClick={getPrevMonth}>Prev</button>
-                <button className="month-change-button" onClick={getNextMonth}>Next</button>
+                <button className="today-button" onClick={todayButton}>Hoy</button>
+                <button className="month-change-button" onClick={getPrevMonth}><FontAwesomeIcon icon={faAngleLeft} className="angle-icon" /></button>
+                <button className="month-change-button" onClick={getNextMonth}><FontAwesomeIcon icon={faAngleRight} className="angle-icon" /></button>
                 <h1 className="date-display">{dateDisplay}</h1>
-                <button className="today-button" onClick={todayButton}>Today</button>
             </div>
-            <div>
-                <button className="day-change-button" onClick={getPrevWeek}>Prev</button>
-                <button className="day-change-button" onClick={getNextWeek}>Next</button>
+            <div className="day-week-change-container">
+                <button className="day-week-change-button" onClick={getPrevWeek}>Prev</button>
+                <button className="day-week-change-button" onClick={getNextWeek}>Next</button>
             </div>
             <div className="week-schedule-container">
                 <div className="week-schedule">

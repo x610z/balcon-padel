@@ -27,8 +27,8 @@ const Nav = () => {
                 <NavLink to="/turnos" activeClassName="selected-nav-link">
                     <li>Turnos</li>
                 </NavLink>
-                <NavLink to="/about" activeClassName="selected-nav-link">
-                    <li>About</li>
+                <NavLink to="/acerca" activeClassName="selected-nav-link">
+                    <li>Acerca</li>
                 </NavLink>
             </ul>
             <div id="burger-container" onClick={burgerClick}>

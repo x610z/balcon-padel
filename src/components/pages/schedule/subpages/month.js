@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import './month.css';
 import useSchedule from './schedule-logic/useSchedule';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const MonthSchedule = () => {
     const { getPrevMonth, getNextMonth, todayButton, daysShort, selectedDate, getCurrentDate,  monthDaysArr, dateDisplay, prevDaysArr, nextDaysArr } = useSchedule();
@@ -9,10 +11,10 @@ const MonthSchedule = () => {
     return(
         <Fragment>
             <div className="month-info-container">
-                <button className="month-change-button" onClick={getPrevMonth}>Prev</button>
-                <button className="month-change-button" onClick={getNextMonth}>Next</button>
+                <button className="today-button" onClick={todayButton}>Hoy</button>
+                <button className="month-change-button" onClick={getPrevMonth}><FontAwesomeIcon icon={faAngleLeft} className="angle-icon" /></button>
+                <button className="month-change-button" onClick={getNextMonth}><FontAwesomeIcon icon={faAngleRight} className="angle-icon" /></button>
                 <h1 className="date-display">{dateDisplay}</h1>
-                <button className="today-button" onClick={todayButton}>Today</button>
             </div>
             <div className="month-schedule-container">
                 <div className="month-schedule">
