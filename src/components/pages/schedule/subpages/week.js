@@ -22,6 +22,7 @@ const WeekSchedule = () => {
                 <button className="day-week-change-button" onClick={getPrevWeek}>Prev</button>
                 <button className="day-week-change-button" onClick={getNextWeek}>Next</button>
             </div>
+            
             <div className="week-schedule-container">
                 <div className="week-schedule">
                     <div className="day-name-container">

@@ -2,11 +2,15 @@
     margin: auto;
     width: 90%;
     height: 90vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 0;
 }
 
 .select-container {
-    width: 10%;
-    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     height: 5vh;
 }
 
@@ -14,18 +18,31 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    float: left;
-    width: 80%;
+    width: auto;
     height: 5vh;
 }
 
 .schedule-selection {
-
     font-size: 2vh;
+    border-radius: 5%;
+    padding: 1vh;
+    border: 1.5px outset black;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.schedule-selection:hover{
+    background-color: rgba(100, 100, 100, 0.1);
 }
 
 .today-button {
     padding: 10px;
+    background-color: transparent;
+    border-radius: 5%;
+    border: 1.5px outset black;
+}
+
+.today-button:hover{
+    background-color: rgba(100, 100, 100, 0.1);
 }
 
 .month-change-button {
@@ -41,7 +58,7 @@
 }
 
 .month-change-button:hover{
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(100, 100, 100, 0.2);
 }
 
 .date-display {
@@ -49,12 +66,21 @@
     
 }
 
-.day-week-change {
-    float: none;
+.day-week-change-container {
+    display: flex;
+    justify-content: center;
+    margin: 1vh 0;
 }
 
 .day-week-change-button{
     padding: 10px;
+    background-color: transparent;
+    border-radius: 5%;
+    border: 1.5px outset black;
+}
+
+.day-week-change-button:hover{
+    background-color: rgba(100, 100, 100, 0.1);
 }
 
 .day-name-container {
@@ -71,6 +97,7 @@
     font-size: 2vh;
     width: 100%;
     border: 1.5px outset black;
+    font-weight: bold;
 }
 
 .today-highlight {
