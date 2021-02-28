@@ -7,7 +7,7 @@ import useSchedule from './subpages/schedule-logic/useSchedule'
 
 
 const Schedule = () => {
-    const { DaySchedule, WeekSchedule, MonthSchedule } = useSchedule();
+    const { DaySchedule, WeekSchedule, MonthSchedule, YearSchedule } = useSchedule();
 
 
     const [scheduleState, setScheduleState] = useState("month");
@@ -21,7 +21,7 @@ const Schedule = () => {
         } else if (scheduleDisplay == 'month'){
             return <MonthSchedule />
         } else if (scheduleDisplay == 'year'){
-            return "year"
+            return <YearSchedule />
         }
     }
     

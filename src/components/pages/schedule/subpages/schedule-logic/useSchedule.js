@@ -3,6 +3,7 @@ import { useState } from 'react';
 import DaySchedule from '../day';
 import WeekSchedule from '../week';
 import MonthSchedule from '../month';
+import YearSchedule from '../year';
 
 export const daysOfWeekArr = [
     'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'
@@ -57,6 +58,7 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
     let monthStartingPoint = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1).getDay();
     let monthEndingPoint = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDay();
 
+    
     //Day Generator
         //Day Function
             //Prev Day
@@ -201,7 +203,7 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
                 getNextMonthDays++;
             }}
         }
-        monthDaysArrCreate();
+        
         
         
             //Prev Next Month
@@ -211,15 +213,26 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
             const getNextMonth = () => {
                 setSelectedDate(prevValue => new Date(prevValue.getFullYear(), prevValue.getMonth() + 1, selectedDate.getDate()));
             }
+
+    //Year Generator
+        //Year Function
+        const yearCreate = ()=>{
             
-    
-    
+            monthNamesArr.map(year => {
+                console.log(year)
+                
+                
+            })
+        }
+        
+        
     
     return {
         //Schedules
         DaySchedule,
         WeekSchedule,
         MonthSchedule,
+        YearSchedule,
         //Prev/Next/Current
         getPrevDay,
         getNextDay,
@@ -231,6 +244,7 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
         dateDisplay,
         //Selected Date
         selectedDate,
+        setSelectedDate,
         //Days/Months
         daysOfWeek,
         daysShort,
@@ -244,7 +258,9 @@ const useSchedule = (daysShort = daysShortArr, monthNames = monthNamesArr, daysO
         //
         firstDayInWeekDate,
         lastDayInWeekDate,
-        
+        //Create
+        monthDaysArrCreate,
+        yearCreate,
     }
 
 

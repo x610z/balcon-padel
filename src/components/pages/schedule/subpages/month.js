@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const MonthSchedule = () => {
-    const { getPrevMonth, getNextMonth, todayButton, daysShort, selectedDate, getCurrentDate,  monthDaysArr, dateDisplay, prevDaysArr, nextDaysArr } = useSchedule();
+    const { getPrevMonth, getNextMonth, todayButton, daysShort, selectedDate, getCurrentDate,  monthDaysArr, dateDisplay, prevDaysArr, nextDaysArr, monthDaysArrCreate } = useSchedule();
     
   
     return(
@@ -25,7 +25,10 @@ const MonthSchedule = () => {
                         ) 
                     }
                     </div>
-                    <div className="month-container">   
+                    <div className="month-container">
+                    {
+                        monthDaysArrCreate()
+                    }
                     {
                         //For Prev Days
                         Object.values(prevDaysArr.reverse()).map(month => {
